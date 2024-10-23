@@ -10,22 +10,7 @@ const dev = true;
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
-const devProxy = {
-    "/blackhistory-proxy": {
-        target: "https://rest.blackhistoryapi.io",
-        pathRewrite: { "^/blackhistory-proxy": "/" },
-        changeOrigin: true,
-    },
-    "/chatgpt/": {
-        target: "https://api.openai.com/v1/engines/davinci-codex/completions",
-        pathRewrite: { "^/chatgpt/": "/" },
-        changeOrigin: true,
-    },
-    "/oak/": {
-        target: "https://open-api.thenational.academy/api/v0/",
-        pathRewrite: { "^/oak/": "/" },
-        changeOrigin: true,
-    },    
+const devProxy = {    
     "/cdn": {
         target: "https://cdn.mytutor.co.uk",
         pathRewrite: { "^/cdn": "/" },
