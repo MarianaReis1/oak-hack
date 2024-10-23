@@ -34,6 +34,7 @@ export default function Question({
             width={question.questionImage.width}
             height={question.questionImage.height}
             style={{ maxWidth: "100%" }}
+            priority
           />
         </Box>
       )}

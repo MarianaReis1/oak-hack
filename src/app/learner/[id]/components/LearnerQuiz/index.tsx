@@ -25,8 +25,7 @@ export default function LearnerQuiz({ quizData, report }: Props) {
   const [quizFinished, setQuizFinished] = useState(false);
 
   const currentQuestion = quizData[currentQuestionIndex];
-  // console.log("lesson slug", report?.lessonSlug);
-  console.log(currentQuestion);
+
   const handleSelectAnswer = (answerContent: string) => {
     setSelectedAnswer(answerContent);
 

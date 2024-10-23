@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Close } from "@mui/icons-material";
-import { Stack, Typography, Button, Chip } from "@mui/material";
+import { Stack, Typography, Button, Chip, Box } from "@mui/material";
 
 type Props = {
   correct: boolean | null;
@@ -28,9 +28,11 @@ export default function Answer({
             </Stack>
           </>
         ) : (
-          <Stack direction="row" gap={2} alignItems="center">
-            <Chip color="warning" icon={<Close />} />
-            <Typography variant="h4">Good try!</Typography>
+          <Stack gap={2}>
+            <Stack direction="row" gap={2} alignItems="center">
+              <Chip color="warning" icon={<Close />} />
+              <Typography variant="h4">Good try!</Typography>
+            </Stack>
             <Typography variant="text2">
               Todo: Have AI generate an explanation of where the learner went
               wrong and link to portion of the video in the Oak lesson that
