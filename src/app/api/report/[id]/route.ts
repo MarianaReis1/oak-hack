@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getRecordById } from "../../sqlite/route";
+import { getRecordById } from "@/utils/db";
 
 export async function GET(
   req: NextRequest,
