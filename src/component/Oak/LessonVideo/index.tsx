@@ -86,9 +86,18 @@ export const LessonVideo = () => {
           <Typography variant="h4" component="h4">
             Lesson MP4 Video
           </Typography>
-          <VideoJS>
-            <source src={lessonVideo || ""} type="video/mp4"></source>
-          </VideoJS>
+          <VideoJS
+            options={{
+              autoplay: false,
+              controls: true,
+              sources: [
+                {
+                  src: lessonVideo || "",
+                  type: "video/mp4",
+                },
+              ],
+            }}
+          />
         </>
       )}
     </>
