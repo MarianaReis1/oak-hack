@@ -2,7 +2,7 @@ import { ChatGPTAPI } from "chatgpt";
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import searchLessons from "../../../component/Oak/searchLessons";
-import axios from "axios"; // Import axios to call the new API
+import axios from "axios";
 
 const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY as string;
 
