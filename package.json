@@ -1,0 +1,47 @@
+{
+  "name": "oak-pre-hack",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev-proxy": "node server.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.4",
+    "@mui/lab": "^6.0.0-beta.12",
+    "@mui/material": "^6.1.4",
+    "@mux/mux-video-react": "^0.11.4",
+    "axios": "^1.7.7",
+    "better-sqlite3": "^11.5.0",
+    "chatgpt": "^5.2.5",
+    "cross-env": "^7.0.3",
+    "express": "^4.21.1",
+    "http-proxy-middleware": "^3.0.3",
+    "katex": "^0.16.11",
+    "lottie-react": "^2.4.0",
+    "next": "14.2.15",
+    "prettier": "^3.3.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-latex-next": "^3.0.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "video.js": "^8.18.1"
+  }
+}

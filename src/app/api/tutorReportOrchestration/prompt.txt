@@ -1,0 +1,45 @@
+You are an AI assistant tasked with analyzing a tutor's lesson report for a student in **Key Stage: $KEY_STAGE, Subject: $SUBJECT**.
+
+Your job is to:
+- Extract the **main keywords** and **topics** discussed in the lesson.
+- Prioritize high-level, **generic terms** and **broad themes** commonly found in the national curriculum, such as overarching concepts (e.g., "Politics," "Colonization," "World War Two") rather than specific names or events.
+- Avoid detailed references to specific names, events, or individuals, and instead map the content to **broad curriculum categories** relevant to the key stage and subject.
+- Return **6-8 keywords or topics** that best summarize the lesson content.
+
+### Here are examples of what I expect for various subjects:
+
+1. **Maths:**
+   - Report: "Today we focused on solving quadratic equations, using both the quadratic formula and factorization. The student also worked on completing the square and understanding graphs of quadratic functions."
+   - Expected Keywords: `["Quadratics", "Algebra", "Graphs", "Equations", "Factorization", "Functions", "Mathematical Methods"]`
+
+2. **Sciences (Biology):**
+   - Report: "The lesson covered photosynthesis, where the student learned about light-dependent reactions and the role of chlorophyll. We also discussed cellular respiration and how it contrasts with photosynthesis."
+   - Expected Keywords: `["Photosynthesis", "Cellular Respiration", "Biology", "Energy Conversion", "Plant Biology", "Scientific Processes"]`
+
+3. **Geography:**
+   - Report: "We studied the impact of deforestation in the Amazon and how it contributes to climate change. The student explored the concepts of human-environment interaction and global ecosystems."
+   - Expected Keywords: `["Deforestation", "Climate Change", "Human-Environment Interaction", "Global Ecosystems", "Sustainability", "Geography"]`
+
+4. **History:**
+   - Report: "We discussed the road to African independence, focusing on nationalist movements, the role of key figures like Nkrumah and Kenyatta, and the eventual decolonization of British colonies."
+   - Expected Keywords: `["Politics", "Colonization", "Africa", "Independence", "Nationalism", "Decolonization", "History"]`
+
+5. **English Literature:**
+   - Report: "The student analyzed the theme of power and corruption in Shakespeare's 'Macbeth.' They also explored the role of ambition in driving the main characters and discussed the symbolism in the play."
+   - Expected Keywords: `["Themes", "Power", "Corruption", "Ambition", "Symbolism", "Literary Analysis", "Shakespeare"]`
+
+6. **English:**
+   - Report: "Today we focused on improving writing skills, particularly sentence structure and the use of conjunctions. The student practiced combining simple sentences into compound and complex sentences."
+   - Expected Keywords: `["Writing Skills", "Sentence Structure", "Conjunctions", "Grammar", "Complex Sentences", "Writing Techniques"]`
+
+7. **Chemistry:**
+   - Report: "We covered the basics of chemical bonding, including ionic and covalent bonds. The student struggled a bit with understanding how electrons are shared or transferred between atoms in different bond types."
+   - Expected Keywords: `["Chemical Bonding", "Ionic Bonds", "Covalent Bonds", "Electron Sharing", "Atomic Structure", "Chemistry Basics"]`
+
+Now, analyze the following tutor’s lesson report and extract the **main topics and keywords** in a similar manner. Please ensure the result contains 6-8 keywords or topics.
+
+Here is the tutor’s lesson report:
+"$LESSON_REPORT"
+
+Please return the response as a JavaScript `string[]` format, like this:
+["keyword1", "keyword2", "topic1", "topic2"]
