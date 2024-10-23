@@ -116,6 +116,7 @@ export default function Home() {
             variant="contained"
             color="primary"
             href={`/learner/${response?.id.toLowerCase()}`}
+            sx={{ marginBottom: "16px" }}
           >
             View Learner Experience
           </Button>

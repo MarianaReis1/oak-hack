@@ -1,8 +1,8 @@
 import { ChatGPTAPI } from "chatgpt";
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
-import { insertRecord } from "../sqlite/route";
 import searchLessons from "../../../component/Oak/searchLessons";
+import axios from "axios"; // Import axios to call the new API
 
 const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY as string;
 
@@ -56,14 +56,14 @@ export async function POST(req: NextRequest) {
     const lessonTitle =
       searchResults.length > 0 ? searchResults[0]?.lessonTitle : null;
 
-    insertRecord(
+    await axios.post("/api/sqlite", {
       subject,
       keyStage,
-      chatGptResponse.text,
+      keywords: chatGptResponse.text,
       id,
       lessonSlug,
       lessonTitle,
-    );
+    });
 
     return NextResponse.json({
       subject,

@@ -1,43 +1,56 @@
-import Database from "better-sqlite3";
-import path from "path";
+import { NextRequest, NextResponse } from "next/server";
+import { insertRecord, getRecordById } from "@/utils/db";
 
-// Set up the SQLite database
-const dbPath = path.resolve(process.cwd(), "my-database.db");
-const db = new Database(dbPath);
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
 
-db.prepare(
-  `
-  CREATE TABLE IF NOT EXISTS data (
-    id TEXT PRIMARY KEY,
-    subject TEXT NOT NULL,
-    keyStage TEXT NOT NULL,
-    keywords TEXT NOT NULL,
-    lessonSlug TEXT NOT NULL,
-    lessonTitle TEXT NOT NULL
-  )
-`,
-).run();
+  if (!id) {
+    return NextResponse.json({ error: "ID is required" }, { status: 400 });
+  }
 
-export function insertRecord(
-  subject: string,
-  keyStage: string,
-  keywords: string,
-  id: string,
-  lessonSlug?: string,
-  lessonTitle?: string,
-) {
-  const stmt = db.prepare(
-    "INSERT INTO data (id, subject, keyStage, keywords, lessonSlug, lessonTitle) VALUES (?, ?, ?, ?, ?, ?)",
-  );
-  stmt.run(id, subject, keyStage, keywords, lessonSlug, lessonTitle);
-  console.log(getRecords());
+  try {
+    const record = getRecordById(id);
+    if (!record) {
+      return NextResponse.json({ error: "Record not found" }, { status: 404 });
+    }
+    return NextResponse.json(record, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
+  }
 }
 
-export function getRecordById(id: string) {
-  const stmt = db.prepare("SELECT * FROM data WHERE id = ?");
-  return stmt.get(id);
-}
+export async function POST(req: NextRequest) {
+  try {
+    const { subject, keyStage, keywords, id, lessonSlug, lessonTitle } =
+      await req.json();
 
-export function getRecords() {
-  return db.prepare("SELECT * FROM data").all();
+    if (
+      !subject ||
+      !keyStage ||
+      !keywords ||
+      !id ||
+      !lessonSlug ||
+      !lessonTitle
+    ) {
+      return NextResponse.json(
+        { error: "All fields are required" },
+        { status: 400 },
+      );
+    }
+
+    insertRecord(subject, keyStage, keywords, id, lessonSlug, lessonTitle);
+    return NextResponse.json(
+      { message: "Record inserted successfully" },
+      { status: 201 },
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to insert record" },
+      { status: 500 },
+    );
+  }
 }
