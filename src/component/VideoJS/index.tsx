@@ -6,7 +6,7 @@ type VideoJsPlayerOptions = Parameters<typeof videojs>[1];
 type VideoJsPlayer = ReturnType<typeof videojs>;
 
 interface VideoJSProps {
-  options: VideoJsPlayerOptions;
+  options?: VideoJsPlayerOptions;
   onReady?: (player: VideoJsPlayer) => void;
 }
 
